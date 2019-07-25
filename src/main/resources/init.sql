@@ -1,71 +1,79 @@
 /*
     Database initialization script that runs on every web-application redeployment.
 */
-DROP TABLE IF EXISTS coupons_shops;
-DROP TABLE IF EXISTS coupons;
-DROP TABLE IF EXISTS shops;
+DROP TABLE IF EXISTS poem;
 DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
-    id SERIAL PRIMARY KEY,
-    email TEXT UNIQUE NOT NULL,
-    password TEXT NOT NULL,
+    user_id SERIAL PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    email VARCHAR(50) UNIQUE NOT NULL,
+    password VARCHAR(50) NOT NULL,
 	CONSTRAINT email_not_empty CHECK (email <> ''),
 	CONSTRAINT password_not_empty CHECK (password <> '')
 );
 
-CREATE TABLE shops (
-    id SERIAL PRIMARY KEY,
-    name TEXT NOT NULL,
-	CONSTRAINT name_not_empty CHECK (name <> '')
+CREATE TABLE poem (
+    poem_id SERIAL PRIMARY KEY,
+    user_id INT NOT NULL,
+    title VARCHAR(50) NOT NULL,
+    content TEXT NOT NULL,
+    date DATE NOT NULL,
+	FOREIGN KEY(user_id) REFERENCES users(user_id)
 );
 
-CREATE TABLE coupons (
-    id SERIAL PRIMARY KEY,
-    name TEXT NOT NULL,
-    percentage INTEGER NOT NULL,
-    CONSTRAINT name_not_empty CHECK (name <> ''),
-	CONSTRAINT percentage_between_bounds CHECK (percentage >= 0 AND percentage <= 100)
-);
+INSERT INTO users (name, email, password) VALUES
+	('Theodore Roethke','user1@user1', 'user1'), -- 1
+	('Dorianne Laux', 'user2@user2', 'user2'), -- 2
+	('Susan Mitchell', 'user3@user3', 'user3'); -- 3
 
-CREATE TABLE coupons_shops (
-    coupon_id INTEGER,
-    shop_id INTEGER,
-    PRIMARY KEY (coupon_id, shop_id),
-    FOREIGN KEY (coupon_id) REFERENCES coupons(id),
-    FOREIGN KEY (shop_id) REFERENCES shops(id)
-);
+INSERT INTO poem (user_id, title, content, date) VALUES
+	(1, 'The Bat','By day the bat is cousin to the mouse.\n
+        He likes the attic of an aging house.\n\n
 
-INSERT INTO users (email, password) VALUES
-	('user1@user1', 'user1'), -- 1
-	('user2@user2', 'user2'), -- 2
-	('user2@user3', 'user3'); -- 3
+        His fingers make a hat about his head.\n
+        His pulse beat is so slow we think him dead.\n\n
 
-INSERT INTO shops (name) VALUES
-	('SPAR'),   -- 1
-	('Tesco'),  -- 2
-	('Auchan'), -- 3
-	('LIDL'),   -- 4
-	('ALDI');   -- 5
+        He loops in crazy figures half the night\n
+        Among the trees that face the corner light.\n\n
 
-INSERT INTO coupons (name, percentage) VALUES
-	('Sausage discount', 10),           -- 1
-	('Bread super-sale', 50),           -- 2
-	('Bread super-sale', 40),           -- 3
-	('20% off from EVERYTHING!', 20),   -- 4
-	('1 product for FREE!', 100);       -- 5
+        But when he brushes up against a screen,\n
+        We are afraid of what our eyes have seen:\n\n
 
-INSERT INTO coupons_shops (coupon_id, shop_id) VALUES
-    (1, 1), -- 1
-    (1, 2),
-    (1, 3),
-    (2, 1), -- 2
-    (2, 2),
-    (2, 3),
-    (2, 5),
-    (3, 1), -- 3
-    (3, 2),
-    (3, 5),
-    (4, 3), -- 4
-    (5, 2), -- 5
-    (5, 5);
+        For something is amiss or out of place\n
+        When mice with wings can wear a human face.','1948-06-24'),           -- 1
+	(2, 'Break','We put the puzzle together piece\n
+        by piece, loving how one curved\n
+        notch fits so sweetly with another.\n
+        A yellow smudge becomes\n
+        the brush of a broom, and two blue arms\n
+        fill in the last of the sky.\n
+        We patch together porch swings and autumn\n
+        trees, matching gold to gold. We hold\n
+        the eyes of deer in our palms, a pair\n
+        of brown shoes. We do this as the child\n
+        circles her room, impatient\n
+        with her blossoming, tired\n
+        of the neat house, the made bed,\n
+        the good food. We let her brood\n
+        as we shuffle through the pieces,\n
+        setting each one into place with a satisfied\n
+        tap, our backs turned for a few hours\n
+        to a world that is crumbling, a sky\n
+        that is falling, the pieces\n
+        we are required to return to.','1755-01-08'),           -- 2
+	(3, 'The Dead','At night the dead come down to the river to drink.
+        They unburden themselves of their fears,
+        their worries for us. They take out the old photographs.
+        They pat the lines in our hands and tell our futures,
+        which are cracked and yellow.
+        Some dead find their way to our houses.
+        They go up to the attics.
+        They read the letters they sent us, insatiable
+        for signs of their love.
+        They tell each other stories.
+        They make so much noise
+        they wake us
+        as they did when we were children and they stayed up
+        drinking all night in the kitchen.','2004-10-07');           -- 3
+
