@@ -4,13 +4,19 @@ import java.util.Objects;
 
 public final class User extends AbstractModel {
 
+    private final String name;
     private final String email;
     private final String password;
 
-    public User(int id, String email, String password) {
+    public User(int id, String name, String email, String password) {
         super(id);
+        this.name = name;
         this.email = email;
         this.password = password;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public String getEmail() {
