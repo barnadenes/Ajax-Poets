@@ -31,6 +31,7 @@ public class PoemsServlet extends AbstractServlet {
             sendMessage(resp, HttpServletResponse.SC_OK, poems);
         } catch (ServiceException e) {
             sendMessage(resp, HttpServletResponse.SC_BAD_REQUEST, e.getMessage());
+            sendMessage(resp, HttpServletResponse.SC_UNAUTHORIZED, e.getMessage());
         } catch (SQLException e) {
             handleSqlError(resp, e);
         }
