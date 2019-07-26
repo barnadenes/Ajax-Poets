@@ -3,7 +3,6 @@ package com.codecool.web.model;
 import java.util.Objects;
 
 public final class User extends AbstractModel {
-
     private final String name;
     private final String email;
     private final String password;
