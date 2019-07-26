@@ -18,6 +18,7 @@ function onLoginButtonClicked() {
     const password = passwordInputEl.value;
 
     const params = new URLSearchParams();
+
     params.append('email', email);
     params.append('password', password);
 

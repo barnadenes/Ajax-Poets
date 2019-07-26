@@ -6,12 +6,9 @@ const INTERNAL_SERVER_ERROR = 500;
 
 let loginContentDivEl;
 let profileContentDivEl;
-let couponContentDivEl;
-let couponsContentDivEl;
-let shopContentDivEl;
-let shopsContentDivEl;
-let backToProfileContentDivEl;
 let logoutContentDivEl;
+let poemsContentDivEl;
+let poemContentDivEl;
 
 function newInfo(targetEl, message) {
     newMessage(targetEl, 'info', message);
@@ -100,12 +97,9 @@ function setUnauthorized() {
 function onLoad() {
     loginContentDivEl = document.getElementById('login-content');
     profileContentDivEl = document.getElementById('profile-content');
-    couponContentDivEl = document.getElementById('coupon-content');
-    couponsContentDivEl = document.getElementById('coupons-content');
-    shopContentDivEl = document.getElementById('shop-content');
-    shopsContentDivEl = document.getElementById('shops-content');
-    backToProfileContentDivEl = document.getElementById('back-to-profile-content');
     logoutContentDivEl = document.getElementById('logout-content');
+    poemsContentDivEl = document.getElementById('poems-content');
+    poemContentDivEl = document.getElementById('poem-content');
 
     const loginButtonEl = document.getElementById('login-button');
     loginButtonEl.addEventListener('click', onLoginButtonClicked);

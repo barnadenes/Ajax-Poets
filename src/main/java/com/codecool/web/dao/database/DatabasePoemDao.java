@@ -31,13 +31,17 @@ public final class DatabasePoemDao extends AbstractDao implements PoemDao {
 
     @Override
     public Poem findPoemById(int poemID) throws SQLException {
-        String sql = "select * from poem\n" +
-            "where poem.poem_id = 1;";
+        String sql = "select poem_id, title, content, date from poem\n" +
+        "where poem_id = ?;";
         try(PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setInt(1, poemID);
             ResultSet resultSet = preparedStatement.executeQuery();
             if(resultSet.next()) {
-                return fetchPoem(resultSet);
+                Poem poem = new Poem(resultSet.getInt("poem_id"),
+                                     resultSet.getString("content"),
+                                     resultSet.getString("title"),
+                                     resultSet.getDate("date"));
+                return poem;
             }
         }
         return null;
