@@ -28,7 +28,7 @@ public final class DatabaseUserDao extends AbstractDao implements UserDao {
         return null;
     }
 
-    private User fetchUser(ResultSet resultSet) throws SQLException {
+    public User fetchUser(ResultSet resultSet) throws SQLException {
         int id = resultSet.getInt("user_id");
         String name = resultSet.getString("name");
         String email = resultSet.getString("email");
