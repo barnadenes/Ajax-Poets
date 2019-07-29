@@ -38,6 +38,14 @@
 
 <div id="poems-content" class="hidden content"></div>
 <div id="poem-content" class="hidden content poem"></div>
+<div id="counter-content" class="hidden content">
+        <form id="counter-form" onsubmit="return false;">
+            <p id="mag-glass">&#x1f50d</p>
+            <input type="text" name="word-to-count">
+        </form>
+        <p id="word-count"></p>
+    </div>
+</div>
 
 <div id="logout-content" class="hidden content">
     <button id="logout-button">Logout</button>

@@ -8,6 +8,7 @@ let loginContentDivEl;
 let profileContentDivEl;
 let logoutContentDivEl;
 let poemsContentDivEl;
+let searchContentDivEl;
 
 function newInfo(targetEl, message) {
     newMessage(targetEl, 'info', message);
@@ -98,6 +99,7 @@ function onLoad() {
     profileContentDivEl = document.getElementById('profile-content');
     logoutContentDivEl = document.getElementById('logout-content');
     poemsContentDivEl = document.getElementById('poems-content');
+    searchContentDivEl = document.getElementById('counter-content');
 
     const loginButtonEl = document.getElementById('login-button');
     loginButtonEl.addEventListener('click', onLoginButtonClicked);

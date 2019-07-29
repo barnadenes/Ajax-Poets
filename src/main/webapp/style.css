@@ -14,3 +14,9 @@
     width: 30%;
     overflow: auto;
 }
+
+#counter-content {
+    text-align: center;
+    font-size: x-large;
+    float: right;
+}

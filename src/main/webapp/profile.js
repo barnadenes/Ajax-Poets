@@ -1,7 +1,7 @@
 function onProfileLoad(user) {
     setUnauthorized()
     clearMessages();
-    showContents(['profile-content', 'logout-content', 'poems-content']);
+    showContents(['profile-content', 'logout-content', 'poems-content', 'counter-content']);
 
 
     const userNameSpanEl = document.getElementById('user-name');
