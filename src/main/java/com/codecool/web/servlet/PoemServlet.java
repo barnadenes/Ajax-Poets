@@ -24,13 +24,16 @@ public class PoemServlet extends AbstractServlet {
             PoemDao poemDao = new DatabasePoemDao(connection);
             PoemService poemService = new SimplePoemService(poemDao);
 
-            String poemID = String.valueOf(req.getAttribute("poemID"));
-            Poem poem = poemService.findOneByID(poemID);
+            String poem_id = String.valueOf(req.getAttribute("id"));
+            Poem poem = poemService.findOneByID(poem_id);
+
+
+                System.out.println(poem.getId() + "poem servlet");
+
 
             sendMessage(resp, HttpServletResponse.SC_OK, poem);
         } catch (ServiceException e) {
             sendMessage(resp, HttpServletResponse.SC_BAD_REQUEST, e.getMessage());
-            sendMessage(resp, HttpServletResponse.SC_UNAUTHORIZED, e.getMessage());
         } catch (SQLException e) {
             handleSqlError(resp, e);
         }

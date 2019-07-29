@@ -4,7 +4,7 @@ function onLogoutResponse() {
         clearMessages();
         showContents(['login-content'])
     } else {
-        onOtherResponse(logoutContentDivEl, this);
+        onOtherResponse(loginContentDivEl, this);
     }
 }
 

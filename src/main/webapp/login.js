@@ -3,12 +3,15 @@ function onLoginResponse() {
         const user = JSON.parse(this.responseText);
         setAuthorization(user);
         onProfileLoad(user);
+        onPoemsLoad();
     } else {
-        onOtherResponse(loginContentDivEl, this);
+        onOtherResponse(logoutContentDivEl, this);
     }
 }
 
 function onLoginButtonClicked() {
+    setUnauthorized();
+
     const loginFormEl = document.forms['login-form'];
 
     const emailInputEl = loginFormEl.querySelector('input[name="email"]');

@@ -8,12 +8,14 @@
         <c:url value="/style.css" var="styleUrl"/>
         <c:url value="/index.js" var="indexScriptUrl"/>
         <c:url value="/login.js" var="loginScriptUrl"/>
+        <c:url value="/poems.js" var="poemScriptUrl"/>
         <c:url value="/profile.js" var="profileScriptUrl"/>
         <c:url value="/logout.js" var="logoutScriptUrl"/>
         <link rel="stylesheet" type="text/css" href="${styleUrl}">
         <script src="${indexScriptUrl}"></script>
         <script src="${loginScriptUrl}"></script>
         <script src="${profileScriptUrl}"></script>
+        <script src="${poemScriptUrl}"></script>
         <script src="${logoutScriptUrl}"></script>
         <title>Ajax-Poets</title>
     </head>
@@ -34,8 +36,8 @@
     <p>Password: <span id="user-password"></span></p>
 </div>
 
-<div id="works-content" class="hidden"></div>
-<div id="work-content" class="hidden"></div>
+<div id="poems-content" class="hidden content"></div>
+<div id="poem-content" class="hidden content"></div>
 
 <div id="logout-content" class="hidden content">
     <button id="logout-button">Logout</button>

@@ -11,6 +11,7 @@ import com.codecool.web.service.simple.SimplePoemService;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -24,14 +25,16 @@ public class PoemsServlet extends AbstractServlet {
         try(Connection connection = getConnection(req.getServletContext())) {
             PoemDao poemDao = new DatabasePoemDao(connection);
             PoemService poemService = new SimplePoemService(poemDao);
+            HttpSession session = req.getSession(false);
 
-            User user = (User)req.getSession().getAttribute("user");
+            User user = (User) session.getAttribute("user");
             List<Poem> poems = poemService.findAllPoemByID(String.valueOf(user.getId()));
+
+            System.out.println(poems.get(0).getId() + "poemsss servlet");
 
             sendMessage(resp, HttpServletResponse.SC_OK, poems);
         } catch (ServiceException e) {
             sendMessage(resp, HttpServletResponse.SC_BAD_REQUEST, e.getMessage());
-            sendMessage(resp, HttpServletResponse.SC_UNAUTHORIZED, e.getMessage());
         } catch (SQLException e) {
             handleSqlError(resp, e);
         }

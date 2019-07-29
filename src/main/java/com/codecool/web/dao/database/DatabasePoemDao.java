@@ -16,12 +16,12 @@ public final class DatabasePoemDao extends AbstractDao implements PoemDao {
     @Override
     public List<Poem> findAllPoem(int userID) throws SQLException {
         List<Poem> Poems = new ArrayList<>();
-        String sql = "select * from poem\n" +
-            "where poem.user_id = ?;";
+        String sql = "select user_id, poem_id, content, title, date from poem " +
+            "where poem.user_id = ?";
 
         try(PreparedStatement statement = connection.prepareStatement(sql)) {
-            ResultSet resultSet = statement.executeQuery();
             statement.setInt(1, userID);
+            ResultSet resultSet = statement.executeQuery();
             while(resultSet.next()) {
                 Poems.add(fetchPoem(resultSet));
             }
@@ -31,8 +31,8 @@ public final class DatabasePoemDao extends AbstractDao implements PoemDao {
 
     @Override
     public Poem findPoemById(int poemID) throws SQLException {
-        String sql = "select poem_id, title, content, date from poem\n" +
-        "where poem_id = ?;";
+        String sql = "select poem_id, title, content, date from poem " +
+        "where poem_id = ?";
         try(PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setInt(1, poemID);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -40,7 +40,7 @@ public final class DatabasePoemDao extends AbstractDao implements PoemDao {
                 Poem poem = new Poem(resultSet.getInt("poem_id"),
                                      resultSet.getString("content"),
                                      resultSet.getString("title"),
-                                     resultSet.getDate("date"));
+                                     resultSet.getString("date"));
                 return poem;
             }
         }
@@ -50,9 +50,10 @@ public final class DatabasePoemDao extends AbstractDao implements PoemDao {
     @Override
     public Poem fetchPoem(ResultSet resultSet) throws SQLException {
         int id = resultSet.getInt("user_id");
+        int poem_id = resultSet.getInt("poem_id");
         String title = resultSet.getString("title");
         String content = resultSet.getString("content");
-        Date date = resultSet.getDate("date");
-        return new Poem(id, title, content, date);
+        String date = resultSet.getString("date");
+        return new Poem(poem_id, content, title, date);
     }
 }

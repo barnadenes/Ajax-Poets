@@ -1,21 +1,19 @@
 package com.codecool.web.model;
 
-import java.util.Date;
-
 public final class Poem {
     private final int id;
     private final String content;
     private final String title;
-    private final Date date;
+    private final String date;
 
-    public Poem(int id, String content, String title, Date date) {
+    public Poem(int id, String content, String title, String date) {
         this.id = id;
         this.content = content;
         this.title = title;
         this.date = date;
     }
 
-    public int id() {
+    public int getId() {
         return id;
     }
 
@@ -27,7 +25,7 @@ public final class Poem {
         return title;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 }
