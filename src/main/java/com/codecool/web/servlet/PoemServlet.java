@@ -24,7 +24,7 @@ public class PoemServlet extends AbstractServlet {
             PoemDao poemDao = new DatabasePoemDao(connection);
             PoemService poemService = new SimplePoemService(poemDao);
 
-            String poem_id = String.valueOf(req.getAttribute("id"));
+            String poem_id = String.valueOf(req.getParameter("id"));
             Poem poem = poemService.findOneByID(poem_id);
 
 

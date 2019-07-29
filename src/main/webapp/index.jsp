@@ -37,7 +37,7 @@
 </div>
 
 <div id="poems-content" class="hidden content"></div>
-<div id="poem-content" class="hidden content"></div>
+<div id="poem-content" class="hidden content poem"></div>
 
 <div id="logout-content" class="hidden content">
     <button id="logout-button">Logout</button>

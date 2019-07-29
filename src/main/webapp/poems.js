@@ -8,8 +8,8 @@ function createPoemsDiv(poems) {
         const liEl = document.createElement('li');
         liEl.textContent = poem.title;
         liEl.style.cursor = "pointer";
-        liEl.dataset.poemId = poem.poem_id;
-        liEl.setAttribute('id', poem.poem_id)
+        liEl.dataset.poemId = poem.id;
+        liEl.setAttribute('id', poem.id)
         liEl.addEventListener('click', onPoemClicked);
         ulEl.appendChild(liEl);
     }
@@ -84,6 +84,7 @@ function onPoemReceived(){
     const poem = JSON.parse(text);
 
     poemDivEl.appendChild(createPoemList(poem));
+    showContents(['profile-content', 'poems-content', 'poem-content', 'logout-content'])
 }
 
 

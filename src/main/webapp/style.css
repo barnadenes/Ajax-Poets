@@ -9,3 +9,8 @@
 .hidden {
     display: none;
 }
+
+.poem{
+    width: 30%;
+    overflow: auto;
+}

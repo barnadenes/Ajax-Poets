@@ -28,39 +28,39 @@ INSERT INTO users (name, email, password) VALUES
 	('Susan Mitchell', 'user3@user3', 'user3'); -- 3
 
 INSERT INTO poem (user_id, title, content, date) VALUES
-	(1, 'The Bat','By day the bat is cousin to the mouse.<br>
-        He likes the attic of an aging house.<br><br>
+	(1, 'The Bat','By day the bat is cousin to the mouse.
+        He likes the attic of an aging house.
 
-        His fingers make a hat about his head.<br>
-        His pulse beat is so slow we think him dead.<br><br>
+        His fingers make a hat about his head.
+        His pulse beat is so slow we think him dead.
 
-        He loops in crazy figures half the night<br>
-        Among the trees that face the corner light.<br><br>
+        He loops in crazy figures half the night
+        Among the trees that face the corner light.
 
-        But when he brushes up against a screen,<br>
-        We are afraid of what our eyes have seen:<br><br>
+        But when he brushes up against a screen,
+        We are afraid of what our eyes have seen:
 
-        For something is amiss or out of place<br>
+        For something is amiss or out of place
         When mice with wings can wear a human face.','1948-06-24'),           -- 1
-	(2, 'Break','We put the puzzle together piece<br>
-        by piece, loving how one curved<br>
-        notch fits so sweetly with another.<br>
-        A yellow smudge becomes\n
-        the brush of a broom, and two blue arms<br>
-        fill in the last of the sky.<br>
-        We patch together porch swings and autumn<br>
-        trees, matching gold to gold. We hold<br>
-        the eyes of deer in our palms, a pair<br>
-        of brown shoes. We do this as the child<br>
-        circles her room, impatient<br>
-        with her blossoming, tired<br>
-        of the neat house, the made bed,<br>
-        the good food. We let her brood<br>
-        as we shuffle through the pieces,<br>
-        setting each one into place with a satisfied<br>
-        tap, our backs turned for a few hours<br>
-        to a world that is crumbling, a sky<br>
-        that is falling, the pieces<br>
+	(2, 'Break','We put the puzzle together piece
+        by piece, loving how one curved
+        notch fits so sweetly with another.
+        A yellow smudge becomes
+        the brush of a broom, and two blue arms
+        fill in the last of the sky.
+        We patch together porch swings and autumn
+        trees, matching gold to gold. We hold
+        the eyes of deer in our palms, a pair
+        of brown shoes. We do this as the child
+        circles her room, impatient
+        with her blossoming, tired
+        of the neat house, the made bed,
+        the good food. We let her brood
+        as we shuffle through the pieces,
+        setting each one into place with a satisfied
+        tap, our backs turned for a few hours
+        to a world that is crumbling, a sky
+        that is falling, the pieces
         we are required to return to.','1755-01-08'),           -- 2
 	(3, 'The Dead','At night the dead come down to the river to drink.
         They unburden themselves of their fears,
